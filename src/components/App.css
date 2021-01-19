@@ -1,0 +1,11 @@
+html,
+body,
+.app{
+    background-color: #eee;
+    height: 100vh;
+    padding: 1em;
+}
+
+.message.error{
+    text-align: left;
+}
