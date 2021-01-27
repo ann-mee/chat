@@ -6,3 +6,7 @@ export const setUser = user => ({
         currentUser: user
     }
 })
+
+export const clearUser = () => ({
+    type: types.CLEAR_USER
+})
