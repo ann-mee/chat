@@ -33,7 +33,6 @@ class UserPanel extends React.Component{
 
 
     render(){
-        console.log(this.props.user)
         return(
             <Grid>
                 <Grid.Column>
