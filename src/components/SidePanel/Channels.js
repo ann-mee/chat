@@ -12,7 +12,6 @@ class Channels extends React.Component{
         channelDetails: '',
         channelRef: firebase.database().ref('channels'),
         modal: false,
-        user: this.props.user,
         firstLoad: true
     }
 
@@ -63,7 +62,8 @@ class Channels extends React.Component{
     isFormValid = ({ channelName, channelDetails }) => channelName && channelDetails
 
     addChannel = () => {
-        const { channelRef, channelName, channelDetails, user } = this.state
+        const { channelRef, channelName, channelDetails } = this.state
+        const { user } = this.props
 
         const key = channelRef.push().key
     
