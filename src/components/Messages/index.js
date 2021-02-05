@@ -14,32 +14,26 @@ class Messages extends React.Component{
         messagesLoading: true
     }
 
-    componentDidMount(){
-        const { user, channel } = this.props
-        if (channel && user){
-            this.addListeners(channel.id)
-        }
-    }
-
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.channel !== prevProps.channel) {
-            this.addListeners(this.props.channel.id)
+        if (!prevProps.channel || this.props.channel.id !== prevProps.channel.id) {
+            this.addListeners(this.props.channel.id)    
         }
     }
 
     addListeners = channelId => {
+        this.setState({messages: []})
         this.addMessageListener(channelId)
     }
 
     addMessageListener = channelId => {
         let loadedMessages = []
-        
+      
         this.state.messagesRef.child(channelId).on('child_added', snapshot => {
             loadedMessages.push(snapshot.val())
-           this.setState({
-               messages: loadedMessages,
-               messagesLoading: false
-           })
+            this.setState({
+                messages: loadedMessages,
+                messagesLoading: false
+            })
         })
     }
 
